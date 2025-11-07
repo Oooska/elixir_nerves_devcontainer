@@ -20,7 +20,7 @@ RUN apt-get update \
     && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
     #
     # Install bash tree
-    && apt-get -y install --no-install-recommends tree nmap\
+    && apt-get -y install --no-install-recommends tree\
     # Install git iproute2, procps, lsb-release (useful for CLI installs)
     && apt-get -y install --no-install-recommends git iproute2 procps iproute2 lsb-release ca-certificates \
     #
@@ -37,6 +37,9 @@ RUN apt-get update \
     && apt-get -y install build-essential automake autoconf git libmnl-dev squashfs-tools ssh-askpass pkg-config curl \
     # Install libs for customizing Nerves systems
     && apt-get -y install libssl-dev libncurses5-dev bc m4 unzip cmake rsync cpio libnl-3-dev\
+    #
+    # Optional networking tools
+    && apt-get -y install nmap iputils-ping \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \ 
@@ -55,7 +58,7 @@ USER vscode
 RUN mix local.hex --force \
     && mix local.rebar --force \ 
     && mix archive.install hex nerves_bootstrap --force \
-    && mix archive.install hex phx_new
+    && mix archive.install hex phx_new --force
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
 
