@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "elixir_workspace",
+			"path": "."
+		},
+
+	],
+	"settings": {
+		"remote.autoForwardPorts": false,
+		"remote.restoreForwardedPorts": false,
+		"remote.forwardOnOpen": false
+	}
+}
